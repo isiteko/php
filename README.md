@@ -1,0 +1,4 @@
+php
+===
+
+&lt;?php 02 require __DIR__ . "/src/lastfm.api.php"; 03 require __DIR__ . "/config.php"; 04   05 // set api key 06 CallerFactory::getDefaultCaller()->setApiKey(LAST_FM_API_KEY); 07   08 // search for the Coldplay band 09 $artistName = "Coldplay"; 10 $limit = 1; 11 $results = Artist::search($artistName, $limit); 12   13 echo "&lt;ul>"; 14 while ($artist = $results->current()) { 15     echo "&lt;li>&lt;div>"; 16     echo "Artist URL: " . $artist->getUrl() . "&lt;br>"; 17     echo '&lt;img src="' . $artist->getImage(4) . '">'; 18     echo "&lt;/div>&lt;/li>"; 19   20     $artist = $results->next(); 21 } 22 echo "&lt;/ul>"; 
